@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CORRUPTED.OS // Y2K Haunted Cyber-Safety Terminal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts for Haunted Grunge & Cyber Aesthetics -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Special+Elite&family=Rubik+Glitch&family=Permanent+Marker&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=Creepster&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Base Haunted Terminal Aesthetics */
+        :root {
+            --glitch-color1: #ff0055;
+            --glitch-color2: #00ffaa;
+            --term-green: #00ff66;
+            --term-red: #ff3333;
+        }
+
+        body {
+            background-color: #050404;
+            color: #d1d5db;
+            font-family: 'Share Tech Mono', 'Courier Prime', monospace;
+            background-image: 
+                radial-gradient(#1c0a0a 1px, transparent 0),
+                radial-gradient(#080808 1px, #050404 50%);
+            background-size: 16px 16px, 32px 32px;
+            overflow-x: hidden;
+            user-select: none;
+        }
+
+        /* CRT Screen Flicker & Scanline Overlay */
+        .scanlines {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            background: linear-gradient(
+                rgba(18, 16, 16, 0) 50%, 
+                rgba(0, 0, 0, 0.4) 50%
+            ), linear-gradient(
+                90deg,
+                rgba(255, 0, 0, 0.04),
+                rgba(0, 255, 0, 0.02),
+                rgba(0, 0, 255, 0.04)
+            );
+            background-size: 100% 4px, 8px 100%;
+            z-index: 999;
+            animation: flicker 0.15s infinite;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 0.97; }
+            50% { opacity: 1; }
+            100% { opacity: 0.94; }
+        }
+
+        /* Screen Distortion Pulse */
+        .haunted-vignette {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            box-shadow: inset 0 0 120px rgba(255, 0, 0, 0.25), inset 0 0 60px rgba(0, 0, 0, 0.9);
+            z-index: 998;
+        }
+
+        /* Interactive Glitching Magazine Cutouts */
+        .cutout-wrapper {
+            display: inline-flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cutout {
+            display: inline-block;
+            padding: 3px 10px;
+            font-weight: 900;
+            text-transform: uppercase;
+            box-shadow: 4px 4px 0px #000, 0 0 10px rgba(255,0,0,0.5);
+            transform: rotate(var(--rot, 0deg));
+            cursor: pointer;
+            transition: all 0.1s ease;
+            position: relative;
+            line-height: 1.1;
+            margin: 3px;
+        }
+
+        .cutout:hover {
+            transform: scale(1.15) rotate(calc(var(--rot, 0deg) * -2)) translate(var(--glitch-x, 2px), var(--glitch-y, -2px));
+            filter: invert(1) hue-rotate(180deg);
+            box-shadow: -4px 4px 15px var(--glitch-color1), 4px -4px 15px var(--glitch-color2);
+            animation: jitter 0.1s infinite;
+        }
+
+        @keyframes jitter {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            20% { transform: translate(-2px, -1px) rotate(-3deg); }
+            40% { transform: translate(-1px, 2px) rotate(3deg); }
+            60% { transform: translate(2px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -2px) rotate(2deg); }
+            100% { transform: translate(1px, 1px) rotate(0deg); }
+        }
+
+        /* Font & Color Variations for Cutouts */
+        .c-1 { font-family: 'Rubik Glitch', cursive; background: #800000; color: #ff0055; --rot: -4deg; font-size: 1.2em; border: 1px solid #ff0055; }
+        .c-2 { font-family: 'VT323', monospace; background: #002b11; color: #00ff66; --rot: 5deg; font-size: 1.4em; border: 1px solid #00ff66; }
+        .c-3 { font-family: 'Special Elite', cursive; background: #2b0000; color: #ffffff; --rot: -2deg; border-left: 4px solid #ff3333; }
+        .c-4 { font-family: 'Permanent Marker', cursive; background: #ffaa00; color: #000000; --rot: 6deg; }
+        .c-5 { font-family: 'Bebas Neue', sans-serif; background: #0a0a0a; color: #00e5ff; border: 1px solid #00e5ff; --rot: -5deg; font-size: 1.3em; }
+        .c-6 { font-family: 'Creepster', cursive; background: #1a0033; color: #ff00aa; --rot: 3deg; font-size: 1.2em; }
+        .c-7 { font-family: 'Courier Prime', monospace; background: #ffffff; color: #000000; --rot: -6deg; font-weight: bold; }
+
+        /* Corrupted Retro Desktop OS Window Frames */
+        .haunted-window {
+            background: #0d0a0a;
+            border: 2px solid #3d1414;
+            box-shadow: 8px 8px 0px #000000, 0 0 20px rgba(255, 0, 0, 0.15);
+            position: relative;
+        }
+
+        .window-header {
+            background: linear-gradient(90deg, #4a0000, #1a0000);
+            border-b: 2px solid #3d1414;
+            padding: 4px 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'VT323', monospace;
+        }
+
+        .grunge-btn {
+            background: #1a0505;
+            color: #ff3333;
+            border: 2px solid #ff3333;
+            font-family: 'VT323', monospace;
+            font-size: 1.25rem;
+            text-transform: uppercase;
+            padding: 4px 12px;
+            transition: all 0.1s ease;
+            box-shadow: 3px 3px 0px #ff3333;
+            cursor: pointer;
+        }
+
+        .grunge-btn:hover {
+            background: #ff3333;
+            color: #000;
+            box-shadow: 0px 0px 10px #ff3333;
+            transform: translate(2px, 2px);
+        }
+
+        .grunge-btn-sec {
+            background: #021a0a;
+            color: #00ff66;
+            border: 2px solid #00ff66;
+            font-family: 'VT323', monospace;
+            font-size: 1.25rem;
+            box-shadow: 3px 3px 0px #00ff66;
+        }
+
+        .grunge-btn-sec:hover {
+            background: #00ff66;
+            color: #000;
+            box-shadow: 0px 0px 10px #00ff66;
+            transform: translate(2px, 2px);
+        }
+
+        /* Glitch Animation for Text */
+        .glitch-text {
+            position: relative;
+            display: inline-block;
+        }
+
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            clip: rect(0, 0, 0, 0);
+        }
+
+        .glitch-text:hover::before {
+            left: -2px;
+            text-shadow: 2px 0 #ff0055;
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim-1 0.8s infinite linear alternate-reverse;
+        }
+
+        .glitch-text:hover::after {
+            left: 2px;
+            text-shadow: -2px 0 #00ff66;
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim-2 0.8s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim-1 {
+            0% { clip: rect(10px, 9999px, 30px, 0); }
+            50% { clip: rect(40px, 9999px, 70px, 0); }
+            100% { clip: rect(20px, 9999px, 50px, 0); }
+        }
+
+        @keyframes glitch-anim-2 {
+            0% { clip: rect(60px, 9999px, 80px, 0); }
+            50% { clip: rect(10px, 9999px, 40px, 0); }
+            100% { clip: rect(50px, 9999px, 90px, 0); }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #050202; border-left: 1px solid #2b0a0a; }
+        ::-webkit-scrollbar-thumb { background: #4a0d0d; border: 1px solid #ff3333; }
+        ::-webkit-scrollbar-thumb:hover { background: #ff3333; }
+
+        /* Marquee Ticker */
+        .marquee {
+            white-space: nowrap;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        .marquee p {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 22s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-100%, 0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col relative pb-12 selection:bg-red-900 selection:text-red-200">
+
+    <!-- CRT Overlay Lines & Vignette -->
+    <div class="scanlines"></div>
+    <div class="haunted-vignette"></div>
+
+    <!-- Corrupted System Ticker -->
+    <div class="bg-black text-red-500 border-b-2 border-red-900 text-xs py-1 font-mono marquee z-20 shadow-[0_0_15px_rgba(255,0,0,0.4)]">
+        <p>SYSTEM CORRUPTION DETECTED... CRITICAL ERROR 0x666_PARANOIA... DO NOT TRUST UNVERIFIED TRANSMISSIONS... YOUR DIGITAL FOOTPRINT IS PERMANENT... PROTECT YOUR CREDENTIALS... BEWARE OF ICT FRAUD & MALICIOUS BOTNETS...</p>
+    </div>
+
+    <!-- Main Header / OS Taskbar Header -->
+    <header class="container mx-auto px-4 pt-6 pb-4 z-10">
+        <div class="flex flex-col md:flex-row justify-between items-center border-b-4 border-dashed border-red-900/60 pb-6 gap-4">
+            
+            <!-- Interactive Glitching Title Banner -->
+            <div class="text-center md:text-left cursor-pointer group" onclick="navigateTo('home')">
+                <div class="cutout-wrapper">
+                    <span class="cutout c-1 text-2xl md:text-4xl" data-text="SYSTEM">SYSTEM</span>
+                    <span class="cutout c-6 text-2xl md:text-4xl" data-text="CORRUPTED">CORRUPTED</span>
+                    <span class="cutout c-2 text-2xl md:text-4xl" data-text="2000">2000</span>
+                </div>
+                <div class="text-xs font-mono text-red-600 mt-2 tracking-widest uppercase flex items-center justify-center md:justify-start gap-2">
+                    <span class="inline-block w-2 h-2 bg-red-600 animate-ping rounded-full"></span>
+                    [ POSSESSED TERMINAL // SAFETY ARCHIVE v6.6.6 ]
+                </div>
+            </div>
+
+            <!-- OS System Control Panel (Search, Game, Settings, Counter) -->
+            <div class="flex flex-wrap items-center justify-center gap-3 bg-black/90 p-2 border-2 border-red-900/80 rounded shadow-[0_0_10px_rgba(255,0,0,0.2)]">
+                
+                <!-- Search Trigger -->
+                <button onclick="toggleSearchModal()" class="grunge-btn text-xs py-1 px-2 flex items-center gap-1">
+                    <i class="fa-solid fa-magnifying-glass"></i> SEARCH.EXE
+                </button>
+
+                <!-- Survival Mini-Game Trigger -->
+                <button onclick="startSurvivalGame()" class="grunge-btn text-xs py-1 px-2 flex items-center gap-1 bg-red-700 text-black border-red-500 font-bold animate-pulse">
+                    <i class="fa-solid fa-skull text-yellow-400"></i> TEST YOUR SURVIVAL
+                </button>
+
+                <!-- Settings Trigger -->
+                <button onclick="toggleSettingsModal()" class="grunge-btn-sec text-xs py-1 px-2 flex items-center gap-1">
+                    <i class="fa-solid fa-gear"></i> CONFIG
+                </button>
+
+                <!-- Hit Counter Aesthetic -->
+                <div class="bg-neutral-950 text-red-500 font-mono text-xs px-2 py-1 border border-red-900 flex items-center gap-1">
+                    <span class="text-neutral-600 text-[10px]">INFECTED:</span>
+                    <span id="hitCounter" class="tracking-widest font-bold text-green-400">066613</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation Bar -->
+        <nav class="mt-4 flex flex-wrap justify-between items-center gap-2 bg-black p-2 border-2 border-red-900/80 shadow-lg">
+            <div class="flex flex-wrap gap-2 items-center">
+                <!-- Back Option Button -->
+                <button onclick="goBack()" class="bg-neutral-900 hover:bg-red-950 text-red-400 px-3 py-1 text-sm font-mono flex items-center gap-1 border border-red-900" title="Go Back">
+                    <i class="fa-solid fa-arrow-left"></i> BACK
+                </button>
+                
+                <!-- Nav Links -->
+                <button onclick="navigateTo('home')" id="nav-home" class="nav-link grunge-btn text-sm">HOME</button>
+                <button onclick="navigateTo('menu')" id="nav-menu" class="nav-link grunge-btn text-sm">MENU / INDEX</button>
+                <button onclick="navigateTo('about')" id="nav-about" class="nav-link grunge-btn text-sm">ABOUT US</button>
+                <button onclick="navigateTo('contact')" id="nav-contact" class="nav-link grunge-btn text-sm">CONTACT US</button>
+            </div>
+
+            <!-- Pagination Quick Jump Controls -->
+            <div class="flex items-center gap-2 text-xs font-mono bg-neutral-950 px-2 py-1 border border-red-900/60">
+                <span class="text-neutral-500 hidden sm:inline">SECTOR:</span>
+                <button onclick="navigatePage(-1)" class="hover:text-red-500 font-bold px-1" title="Previous Page"><i class="fa-solid fa-chevron-left"></i> PREV</button>
+                <span id="pageIndicator" class="text-green-400 font-bold">1 / 4</span>
+                <button onclick="navigatePage(1)" class="hover:text-red-500 font-bold px-1" title="Next Page">NEXT <i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-4 my-6 flex-1 z-10">
+
+        <!-- ================= HOME VIEW ================= -->
+        <section id="view-home" class="view-section space-y-8">
+            
+            <!-- Hero Window Banner -->
+            <div class="haunted-window p-6 text-center border-red-600/70">
+                <div class="window-header mb-4">
+                    <span class="text-red-400 text-xs">[ C:\HAUNTED_SYSTEM\WARNING.LOG ]</span>
+                    <div class="flex gap-1 text-[10px]">
+                        <span class="px-1 bg-red-900 text-black">_</span>
+                        <span class="px-1 bg-red-600 text-black">X</span>
+                    </div>
+                </div>
+
+                <h1 class="text-xl md:text-3xl font-bold mb-4">
+                    <div class="cutout-wrapper">
+                        <span class="cutout c-3">HOW</span>
+                        <span class="cutout c-1">TECH</span>
+                        <span class="cutout c-4">IS</span>
+                        <span class="cutout c-2">ROTTING</span>
+                        <span class="cutout c-6">OUR</span>
+                        <span class="cutout c-5">BRAINS</span>
+                    </div>
+                </h1>
+                <p class="text-red-200/80 font-mono text-sm max-w-2xl mx-auto leading-relaxed mt-4 bg-black/60 p-3 border border-red-900/40">
+                    You have entered a possessed digital archive. Modern technology promises connection, yet feeds on personal data, mental exhaustion, and outrage. Learn how to survive the digital infestation before your digital identity is erased.
+                </p>
+            </div>
+
+            <!-- Main Interactive Content Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                
+                <!-- Survival Challenge Banner Callout -->
+                <div class="md:col-span-2 haunted-window p-5 border-2 border-red-600 bg-red-950/20 text-center relative overflow-hidden">
+                    <div class="window-header mb-3">
+                        <span class="text-yellow-400 text-xs">&lt;!&gt; CRITICAL SYSTEM TEST DETECTED</span>
+                        <span class="text-xs text-red-500 animate-pulse">STATUS: PENDING</span>
+                    </div>
+                    <h3 class="text-xl font-bold font-mono text-red-500 flex items-center justify-center gap-2 mb-2">
+                        <i class="fa-solid fa-triangle-exclamation text-yellow-400"></i> REAL-LIFE ICT SURVIVAL DIAGNOSTIC
+                    </h3>
+                    <p class="text-xs font-mono text-neutral-300 max-w-xl mx-auto mb-4">
+                        Test your defenses against phishing attacks, ransomware, identity theft, and toxic online mobs. Ensure you don't become the next victim or perpetrator of digital harm.
+                    </p>
+                    <button onclick="startSurvivalGame()" class="grunge-btn py-2 px-6 text-sm font-bold bg-red-600 text-black hover:bg-white hover:text-black transition-all transform hover:scale-105 shadow-[0_0_15px_rgba(255,0,0,0.8)]">
+                        <i class="fa-solid fa-gamepad"></i> INITIALIZE SURVIVAL DIAGNOSTIC &gt;&gt;
+                    </button>
+                </div>
+
+                <!-- Article 1: Impact on Generation -->
+                <div class="haunted-window p-5 hover:border-red-500 transition-colors">
+                    <div class="window-header mb-3">
+                        <span class="cutout c-1 text-[10px]">LOG_01</span>
+                        <span class="text-[10px] text-red-400">MEMORY_CORRUPT.DAT</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-red-500 mb-2 font-mono flex items-center gap-2">
+                        <i class="fa-solid fa-brain text-sm"></i> PSYCHOLOGICAL DECAY
+                    </h2>
+                    <p class="text-sm text-neutral-300 leading-relaxed font-mono mb-4">
+                        Hyper-connected networks exploit human psychology with artificial dopamine loops. Constant notifications fragment concentration and induce chronic digital fatigue.
+                    </p>
+                    <button onclick="openModal('article1')" class="grunge-btn text-xs">DECRYPT DOSSIER &gt;&gt;</button>
+                </div>
+
+                <!-- Article 2: How Not To Be Prone To Harm -->
+                <div class="haunted-window p-5 hover:border-green-500 transition-colors">
+                    <div class="window-header mb-3">
+                        <span class="cutout c-2 text-[10px]">DEFENSE</span>
+                        <span class="text-[10px] text-green-400">FIREWALL_ACTIVE</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-green-400 mb-2 font-mono flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved text-sm"></i> SYSTEM DEFENSE GUIDELINES
+                    </h2>
+                    <p class="text-sm text-neutral-300 leading-relaxed font-mono mb-4">
+                        Defend your data from identity thieves, malicious bots, and social engineering scams. Establish strong digital boundaries before compromise occurs.
+                    </p>
+                    <button onclick="openModal('article2')" class="grunge-btn-sec text-xs">ARM DEFENSES &gt;&gt;</button>
+                </div>
+
+                <!-- Article 3: Avoiding Harm To Others -->
+                <div class="haunted-window p-5 hover:border-yellow-500 transition-colors">
+                    <div class="window-header mb-3">
+                        <span class="cutout c-4 text-[10px]">ETHICS</span>
+                        <span class="text-[10px] text-yellow-400">PROTOCOL_66</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-yellow-400 mb-2 font-mono flex items-center gap-2">
+                        <i class="fa-solid fa-handshake-angle text-sm"></i> ANTI-CYBERHARASSMENT
+                    </h2>
+                    <p class="text-sm text-neutral-300 leading-relaxed font-mono mb-4">
+                        Anonymity shouldn't strip away basic human empathy. Stop the spread of unverified outrage, doxxing attempts, and digital intimidation tactics.
+                    </p>
+                    <button onclick="openModal('article3')" class="grunge-btn text-xs border-yellow-500 text-yellow-400 hover:bg-yellow-400 hover:text-black">VIEW PROTOCOLS &gt;&gt;</button>
+                </div>
+
+                <!-- Interactive Security Checklist Box -->
+                <div class="haunted-window p-5 border-blue-900/60">
+                    <div class="window-header mb-3">
+                        <span class="cutout c-5 text-[10px]">AUDIT</span>
+                        <span class="text-[10px] text-blue-400">DIAGNOSTIC_CHECK</span>
+                    </div>
+                    <h2 class="text-xl font-bold text-blue-400 mb-2 font-mono flex items-center gap-2">
+                        <i class="fa-solid fa-list-check text-sm"></i> TERMINAL SECURITY AUDIT
+                    </h2>
+                    <div class="space-y-2 text-xs font-mono text-neutral-300 mb-4" id="checklist">
+                        <label class="flex items-center gap-2 cursor-pointer hover:text-green-400">
+                            <input type="checkbox" onchange="updateAudit()" class="accent-red-600"> Multi-Factor Authentication enabled on critical accounts
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer hover:text-green-400">
+                            <input type="checkbox" onchange="updateAudit()" class="accent-red-600"> Social profiles locked from search engine indexing
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer hover:text-green-400">
+                            <input type="checkbox" onchange="updateAudit()" class="accent-red-600"> Unverified emergency news double-checked with official sources
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer hover:text-green-400">
+                            <input type="checkbox" onchange="updateAudit()" class="accent-red-600"> Geolocation tags disabled on public uploaded photos
+                        </label>
+                    </div>
+                    <div class="text-xs font-mono text-neutral-400 bg-black p-2 border border-red-900/60" id="auditStatus">
+                        SECURITY STATUS: UNCHECKED (0/4 PASSED)
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= MENU / INDEX VIEW ================= -->
+        <section id="view-menu" class="view-section hidden space-y-6">
+            <div class="haunted-window p-6">
+                <div class="window-header mb-4">
+                    <span class="text-red-400 text-xs">[ C:\HAUNTED_SYSTEM\DIRECTORY_INDEX.EXE ]</span>
+                </div>
+                <h2 class="text-2xl font-bold text-red-500 font-mono mb-4 flex items-center gap-2 border-b border-red-900 pb-2">
+                    <i class="fa-solid fa-folder-tree"></i> CORRUPTED FILE DIRECTORY
+                </h2>
+                <p class="text-sm text-neutral-400 font-mono mb-6">
+                    Browse system archives detailing digital survival tactics, cognitive protection, and ethical netiquette.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 font-mono text-sm">
+                    <div class="bg-black/80 p-4 border border-red-900 hover:border-red-500">
+                        <div class="cutout c-1 text-xs mb-2">FILE: COGNITIVE_TRAP.LOG</div>
+                        <h3 class="font-bold text-red-400 mb-1">1. Algorithmic Dopamine Loops</h3>
+                        <p class="text-xs text-neutral-400 mb-3">Analysis of short-form video addictions and deliberate attention fragmentation.</p>
+                        <button onclick="openModal('article1')" class="text-xs text-red-500 underline hover:text-white">&gt; EXECUTE FILE</button>
+                    </div>
+
+                    <div class="bg-black/80 p-4 border border-green-900 hover:border-green-500">
+                        <div class="cutout c-2 text-xs mb-2">FILE: IDENTITY_SHIELD.SYS</div>
+                        <h3 class="font-bold text-green-400 mb-1">2. Digital Footprint Erasure</h3>
+                        <p class="text-xs text-neutral-400 mb-3">Methods to clear personal tracking, limit data brokers, and stay anonymous.</p>
+                        <button onclick="openModal('article2')" class="text-xs text-green-400 underline hover:text-white">&gt; EXECUTE FILE</button>
+                    </div>
+
+                    <div class="bg-black/80 p-4 border border-yellow-900 hover:border-yellow-500">
+                        <div class="cutout c-4 text-xs mb-2">FILE: MOB_PREVENTION.NET</div>
+                        <h3 class="font-bold text-yellow-400 mb-1">3. De-escalating Viral Outrage</h3>
+                        <p class="text-xs text-neutral-400 mb-3">Why witch-hunts happen online and how to avoid contributing to digital violence.</p>
+                        <button onclick="openModal('article3')" class="text-xs text-yellow-400 underline hover:text-white">&gt; EXECUTE FILE</button>
+                    </div>
+
+                    <div class="bg-black/80 p-4 border border-blue-900 hover:border-blue-500">
+                        <div class="cutout c-5 text-xs mb-2">FILE: UNPLUG_TOOLKIT.EXE</div>
+                        <h3 class="font-bold text-blue-400 mb-1">4. Real-World Grounding</h3>
+                        <p class="text-xs text-neutral-400 mb-3">5 concrete steps to disconnect from screen overload and reduce screen panic.</p>
+                        <button onclick="openModal('grounding')" class="text-xs text-blue-400 underline hover:text-white">&gt; EXECUTE FILE</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ABOUT US VIEW ================= -->
+        <section id="view-about" class="view-section hidden space-y-6">
+            <div class="haunted-window p-6">
+                <div class="window-header mb-4">
+                    <span class="text-red-400 text-xs">[ C:\HAUNTED_SYSTEM\ABOUT_CREATORS.SYS ]</span>
+                </div>
+                <div class="cutout-wrapper mb-4">
+                    <span class="cutout c-1 text-2xl">WHO</span>
+                    <span class="cutout c-3 text-2xl">ARE</span>
+                    <span class="cutout c-2 text-2xl">WE?</span>
+                </div>
+                
+                <div class="space-y-4 font-mono text-sm text-neutral-300 leading-relaxed">
+                    <p class="bg-black/90 p-4 border-l-4 border-red-600 text-base text-red-300">
+                        Welcome to our website! We created this platform to share useful information and connect with people who share our interests. Our goal is to provide helpful content and make your experience enjoyable.
+                    </p>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4 text-center">
+                        <div class="bg-black/80 p-3 border border-red-900">
+                            <i class="fa-solid fa-eye-slash text-2xl text-red-500 mb-2"></i>
+                            <h4 class="font-bold text-xs uppercase text-white">ZERO TRACKING</h4>
+                            <p class="text-[11px] text-neutral-500 mt-1">No cookies. No background analytics harvest.</p>
+                        </div>
+                        <div class="bg-black/80 p-3 border border-red-900">
+                            <i class="fa-solid fa-skull text-2xl text-yellow-500 mb-2"></i>
+                            <h4 class="font-bold text-xs uppercase text-white">ANTI-CYBERHARASSMENT</h4>
+                            <p class="text-[11px] text-neutral-500 mt-1">Promoting digital empathy and stopping outrage mobs.</p>
+                        </div>
+                        <div class="bg-black/80 p-3 border border-red-900">
+                            <i class="fa-solid fa-plug text-2xl text-green-500 mb-2"></i>
+                            <h4 class="font-bold text-xs uppercase text-white">OFFLINE GROUNDING</h4>
+                            <p class="text-[11px] text-neutral-500 mt-1">Encouraging real-world awareness and unplugging.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CONTACT US VIEW ================= -->
+        <section id="view-contact" class="view-section hidden space-y-6">
+            <div class="haunted-window p-6 max-w-2xl mx-auto">
+                <div class="window-header mb-4">
+                    <span class="text-red-400 text-xs">[ TRANSMIT_SIGNAL.EXE ]</span>
+                </div>
+                <div class="cutout-wrapper mb-4">
+                    <span class="cutout c-4 text-2xl">TRANSMIT</span>
+                    <span class="cutout c-5 text-2xl">MESSAGE</span>
+                </div>
+                
+                <p class="text-sm font-mono text-red-200 mb-4 bg-black/80 p-3 border-l-4 border-yellow-500">
+                    Have a questions or want to learn more about us? Feel free to contact us!
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6 font-mono text-xs">
+                    <div class="bg-black p-3 border border-red-900 flex items-center gap-3">
+                        <i class="fa-solid fa-phone text-red-500 text-base"></i>
+                        <div>
+                            <span class="text-neutral-500 block text-[10px]">DIRECT HOTLINE:</span>
+                            <a href="tel:09977393956" class="text-red-400 hover:text-white font-bold">09977393956</a>
+                        </div>
+                    </div>
+                    <div class="bg-black p-3 border border-red-900 flex items-center gap-3">
+                        <i class="fa-solid fa-envelope text-green-500 text-base"></i>
+                        <div>
+                            <span class="text-neutral-500 block text-[10px]">SYSTEM EMAIL:</span>
+                            <a href="mailto:chrisjhonaladad4@gmail.com" class="text-green-400 hover:text-white font-bold break-all">chrisjhonaladad4@gmail.com</a>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-4 font-mono text-sm">
+                    <div>
+                        <label class="block text-xs text-neutral-400 mb-1">TERMINAL USER HANDLE:</label>
+                        <input type="text" required placeholder="e.g. Anon_User_99" class="w-full bg-black border border-red-900 p-2 text-red-400 focus:outline-none focus:border-red-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-neutral-400 mb-1">EMAIL ADDRESS (OPTIONAL):</label>
+                        <input type="email" placeholder="user@domain.com" class="w-full bg-black border border-red-900 p-2 text-red-400 focus:outline-none focus:border-red-500">
+                    </div>
+                    <div>
+                        <label class="block text-xs text-neutral-400 mb-1">MESSAGE / INQUIRY:</label>
+                        <textarea rows="4" required placeholder="Type transmission..." class="w-full bg-black border border-red-900 p-2 text-red-400 focus:outline-none focus:border-red-500"></textarea>
+                    </div>
+                    <button type="submit" class="grunge-btn w-full py-2">SEND TRANSMISSION &gt;&gt;</button>
+                </form>
+
+                <div id="contactStatus" class="hidden mt-4 p-3 bg-green-950 border border-green-600 text-green-400 font-mono text-xs text-center">
+                    ✔ TRANSMISSION DISPATCHED. DATA CLEARED FROM SYSTEM BUFFER.
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= MODALS & POPUPS ================= -->
+
+    <!-- Article Detail Modal -->
+    <div id="articleModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="haunted-window max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 border-red-600 relative">
+            <div class="window-header mb-2">
+                <span class="text-red-400 text-xs">[ DECRYPTED_FILE.LOG ]</span>
+                <button onclick="closeModal()" class="bg-red-600 text-black font-bold px-2 py-0.5 font-mono hover:bg-white text-xs">
+                    [X] CLOSE
+                </button>
+            </div>
+            <div id="modalContent" class="font-mono space-y-4 text-sm text-neutral-300 pt-2">
+                <!-- Content injected dynamically -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div id="searchModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="haunted-window max-w-md w-full p-6 border-neutral-700 relative">
+            <div class="window-header mb-4">
+                <span class="text-red-400 text-xs">[ SEARCH_INDEX.EXE ]</span>
+                <button onclick="toggleSearchModal()" class="text-neutral-400 hover:text-white font-mono text-xs">
+                    [X]
+                </button>
+            </div>
+            <h3 class="text-lg font-bold text-red-500 font-mono mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-magnifying-glass"></i> QUERY ARCHIVE
+            </h3>
+            <input type="text" id="searchInput" oninput="performSearch()" placeholder="Type keyword (e.g. privacy, scam, harm)..." class="w-full bg-black border border-red-600 p-2 text-red-400 font-mono text-sm focus:outline-none mb-4">
+            
+            <div id="searchResults" class="space-y-2 max-h-48 overflow-y-auto font-mono text-xs text-neutral-400">
+                <p class="italic text-neutral-600">Enter keywords above to query system databases...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settingsModal" class="fixed inset-0 bg-black/90 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="haunted-window max-w-md w-full p-6 border-green-600 relative">
+            <div class="window-header mb-4">
+                <span class="text-green-400 text-xs">[ OS_CONFIGURATION.SYS ]</span>
+                <button onclick="toggleSettingsModal()" class="text-neutral-400 hover:text-white font-mono text-xs">
+                    [X]
+                </button>
+            </div>
+            <h3 class="text-lg font-bold text-green-500 font-mono mb-4 flex items-center gap-2">
+                <i class="fa-solid fa-sliders"></i> TERMINAL CONFIG
+            </h3>
+            
+            <div class="space-y-4 font-mono text-xs">
+                <div class="flex justify-between items-center bg-black p-3 border border-neutral-800">
+                    <span>CRT SCANLINES & FLICKER</span>
+                    <button onclick="toggleScanlines()" id="btnScanlines" class="grunge-btn-sec text-[10px] px-2 py-1">ENABLED</button>
+                </div>
+                <div class="flex justify-between items-center bg-black p-3 border border-neutral-800">
+                    <span>SYSTEM TEXT SIZE</span>
+                    <button onclick="toggleFontSize()" id="btnFont" class="grunge-btn text-[10px] px-2 py-1">NORMAL</button>
+                </div>
+                <div class="flex justify-between items-center bg-black p-3 border border-neutral-800">
+                    <span>TERMINAL PHOSPHOR COLOR</span>
+                    <button onclick="toggleTheme()" id="btnTheme" class="grunge-btn text-[10px] px-2 py-1">HAUNTED RED</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Test Your Survival Mini-Game Modal -->
+    <div id="gameModal" class="fixed inset-0 bg-black/95 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="haunted-window max-w-xl w-full p-6 border-red-600 relative my-auto">
+            <div class="window-header mb-4">
+                <span class="text-red-500 text-xs animate-pulse">[ DIAGNOSTIC_KERNEL_RUNNING ]</span>
+                <button onclick="closeSurvivalGame()" class="text-neutral-400 hover:text-white font-mono text-xs">
+                    [X] ABORT
+                </button>
+            </div>
+            
+            <div id="gameContainer">
+                <!-- Dynamic Game Content Injected Here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Back To Top Floating Button -->
+    <button onclick="scrollToTop()" id="backToTopBtn" class="fixed bottom-6 right-6 grunge-btn text-xs px-3 py-2 z-40 hidden shadow-2xl flex items-center gap-1" title="Back to Top">
+        <i class="fa-solid fa-arrow-up"></i> TOP
+    </button>
+
+    <!-- Footer -->
+    <footer class="container mx-auto px-4 mt-12 border-t-2 border-dashed border-red-900/60 pt-6 text-center text-xs font-mono text-neutral-600 z-10">
+        <p class="mb-2">CORRUPTED.OS &copy; 2000-2026. POSSESSED TERMINAL ARCHIVE. UNPLUG TO STAY SAFE.</p>
+        <p class="text-[10px] text-red-900">RETRO CRT INTERFACE // COMPATIBLE WITH NETSCAPE NAVIGATOR & POSSESSED HARDWARE</p>
+    </footer>
+
+    <!-- JavaScript Application Logic -->
+    <script>
+        // Article Database
+        const articlesDB = {
+            'article1': {
+                title: 'PSYCHOLOGICAL DECAY: COGNITIVE OVERLOAD',
+                badge: 'SECTION 01',
+                content: `
+                    <h3 class="text-lg font-bold text-red-500">Algorithmic Dopamine Exploitation</h3>
+                    <p class="mt-2">Modern social feeds use infinite scrolling algorithms designed to hijack human focus. By removing natural stopping points, platforms create an addiction cycle that fragments attention and sleep.</p>
+                    <h4 class="font-bold text-white mt-4">Symptoms of Digital Degradation:</h4>
+                    <ul class="list-disc pl-5 space-y-1 text-xs text-neutral-400 mt-2">
+                        <li>Decreased capacity for deep reading and prolonged focus.</li>
+                        <li>Anxiety triggered by non-stop social comparison and notification fatigue.</li>
+                        <li>Compulsive screen-checking habit loops (Phantom Vibration Syndrome).</li>
+                    </ul>
+                `
+            },
+            'article2': {
+                title: 'CYBER SELF-DEFENSE: PREVENTING PERSONAL HARM',
+                badge: 'DEFENSE GUIDE',
+                content: `
+                    <h3 class="text-lg font-bold text-green-400">Hardening Your Digital Perimeter</h3>
+                    <p class="mt-2">Avoid becoming a victim of digital scams, identity theft, and stalking with key protocols:</p>
+                    <div class="bg-black p-3 border border-green-900 mt-3 space-y-2 text-xs">
+                        <p><strong class="text-green-400">1. Treat Unsolicited Links as Threats:</strong> Never click login links in urgent SMS or emails.</p>
+                        <p><strong class="text-green-400">2. Password Isolation:</strong> A breach on one casual forum should never reveal your primary email password.</p>
+                        <p><strong class="text-green-400">3. Metadata Removal:</strong> Disable automatic GPS geotagging on photos shared publicly.</p>
+                    </div>
+                `
+            },
+            'article3': {
+                title: 'ETHICAL CONDUCT: AVOIDING HARM TO OTHERS',
+                badge: 'ETHICS CODE',
+                content: `
+                    <h3 class="text-lg font-bold text-yellow-400">Digital Empathy & Anti-Bullying Protocol</h3>
+                    <p class="mt-2">Online anonymity often breaks natural social boundaries. Protect others by staying mindful:</p>
+                    <ul class="list-disc pl-5 space-y-2 text-xs text-neutral-300 mt-3">
+                        <li><strong>Refuse Mass Mob Harassment:</strong> Do not participate in viral dogpiles or doxxing attempts.</li>
+                        <li><strong>Fact-Check Before Sharing Outrage:</strong> Misinformation spreads when people share articles based solely on anger-inducing headlines.</li>
+                        <li><strong>Respect Consent & Privacy:</strong> Never post screenshots of private messages or non-consensual images.</li>
+                    </ul>
+                `
+            },
+            'grounding': {
+                title: 'REAL-WORLD GROUNDING EXERCISES',
+                badge: 'TOOLKIT',
+                content: `
+                    <h3 class="text-lg font-bold text-blue-400">5 Steps to Break Screen Possession</h3>
+                    <ol class="list-decimal pl-5 space-y-2 text-xs text-neutral-300 mt-3">
+                        <li>Set a strict 'screen-free' boundary 60 minutes before sleeping.</li>
+                        <li>Turn off all non-essential push notifications.</li>
+                        <li>Engage in tangible real-world tasks (reading physical print, walking without headphones).</li>
+                        <li>Utilize grayscale display modes to reduce visual dopamine cues.</li>
+                    </ol>
+                `
+            }
+        };
+
+        // Real-Life Based ICT Survival Scenarios
+        const survivalScenarios = [
+            {
+                id: 1,
+                tag: "ICT THREAT: PHISHING & FINANCIAL SCAM",
+                situation: "You receive an urgent SMS from your bank claiming your account will be frozen in 2 hours due to unauthorized activity. The message contains a link: 'http://secure-bank-verify-update.com/login'.",
+                options: [
+                    { text: "Click the link immediately to verify your identity before your account gets locked.", correct: false, explanation: "FAIL! Real banks never send urgent external links for credential verification. This is a classic credential harvesting scam." },
+                    { text: "Ignore the link, open your official banking app independently, or call the phone number on your bank card.", correct: true, explanation: "SURVIVED! Navigating directly through official, verified channels keeps your financial credentials safe." }
+                ]
+            },
+            {
+                id: 2,
+                tag: "NEGATIVE IMPACT: VIRAL HARASSMENT & MOB MENTALITY",
+                situation: "A leaked video goes viral on social media showing a local teenager making a rude comment. Internet mobs dox their home address and family details. People encourage you to repost it to 'punish' them.",
+                options: [
+                    { text: "Repost the video and comment to call them out so they face consequences.", correct: false, explanation: "HARMFUL! Participating in dogpiles causes severe psychological harm and contributes to unchecked digital mob violence." },
+                    { text: "Do not share or boost the post. Report toxic doxxing attempts to platform moderators.", correct: true, explanation: "SURVIVED & PROTECTED OTHERS! De-escalating viral mobs prevents catastrophic real-world consequences for victims." }
+                ]
+            },
+            {
+                id: 3,
+                tag: "ICT THREAT: RANSOMWARE / MALICIOUS ATTACHMENT",
+                situation: "You receive an email from 'hr_updates@company-recruitment.net' with an attached file named 'Employment_Offer_Document.exe'.",
+                options: [
+                    { text: "Download and extract the attachment to view the offer letter.", correct: false, explanation: "FAIL! Executable files (.exe, .scr) disguised as documents carry trojans or ransomware that hijack your system files." },
+                    { text: "Do not run executable attachments. Delete the message and verify sender credentials.", correct: true, explanation: "SURVIVED! Valid job documents are viewable online or sent as standard PDFs. Never run executable files from emails." }
+                ]
+            },
+            {
+                id: 4,
+                tag: "NEGATIVE IMPACT: IDENTITY THEFT & SEXTORTION",
+                situation: "An online acquaintance you met recently asks for intimate photos, promising to keep them completely private.",
+                options: [
+                    { text: "Send the photos to build trust and intimacy.", correct: false, explanation: "FAIL! This is a tactic used in sextortion scams. Victims are blackmailed for money under threat of leaks." },
+                    { text: "Refuse to share intimate images or personal identification online.", correct: true, explanation: "SURVIVED! Protecting intimate imagery ensures you retain total control over your digital identity." }
+                ]
+            },
+            {
+                id: 5,
+                tag: "ICT THREAT: FAKE NEWS & PANIC PROPAGATION",
+                situation: "During an emergency, an unverified social media account posts a rumor claiming a nuclear radiation leak occurred nearby, urging everyone to evacuate immediately.",
+                options: [
+                    { text: "Retweet it immediately to warn all your friends just in case.", correct: false, explanation: "HARMFUL! Spreading unverified emergency panic clogs communication lines and endangers real crisis management." },
+                    { text: "Check official government emergency services and verified news channels before sharing.", correct: true, explanation: "SURVIVED & PROTECTED OTHERS! Fact-checking information before sharing prevents dangerous societal panic." }
+                ]
+            }
+        ];
+
+        let currentGameIndex = 0;
+        let gameScore = 0;
+
+        function startSurvivalGame() {
+            currentGameIndex = 0;
+            gameScore = 0;
+            document.getElementById('gameModal').classList.remove('hidden');
+            renderScenario();
+        }
+
+        function closeSurvivalGame() {
+            document.getElementById('gameModal').classList.add('hidden');
+        }
+
+        function renderScenario() {
+            const container = document.getElementById('gameContainer');
+            const scenario = survivalScenarios[currentGameIndex];
+
+            container.innerHTML = `
+                <div class="font-mono space-y-4">
+                    <div class="flex justify-between items-center border-b border-red-900 pb-2">
+                        <span class="cutout c-1 text-xs">${scenario.tag}</span>
+                        <span class="text-xs text-neutral-400">TEST ${currentGameIndex + 1} / ${survivalScenarios.length}</span>
+                    </div>
+
+                    <p class="text-sm text-neutral-200 bg-black/90 p-3 border-l-4 border-red-600 leading-relaxed">
+                        "${scenario.situation}"
+                    </p>
+
+                    <div class="space-y-3 pt-2">
+                        <p class="text-xs text-red-400 uppercase font-bold">&gt; SELECT ACTION RESPONSE:</p>
+                        ${scenario.options.map((opt, i) => `
+                            <button onclick="makeChoice(${opt.correct}, '${escapeQuotes(opt.explanation)}')" class="w-full text-left bg-black hover:bg-red-950/60 p-3 border border-red-900/80 hover:border-red-500 text-xs text-neutral-300 transition-colors">
+                                [${i + 1}] ${opt.text}
+                            </button>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function escapeQuotes(str) {
+            return str.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+        }
+
+        function makeChoice(isCorrect, explanation) {
+            if (isCorrect) gameScore++;
+
+            const container = document.getElementById('gameContainer');
+            container.innerHTML = `
+                <div class="font-mono space-y-4 text-center">
+                    <span class="cutout ${isCorrect ? 'c-5' : 'c-1'} text-lg">
+                        ${isCorrect ? '✔ SURVIVED SCENARIO' : '✖ CORRUPTED / HARMFUL CHOICE'}
+                    </span>
+
+                    <p class="text-xs text-neutral-300 bg-black p-4 border ${isCorrect ? 'border-green-600' : 'border-red-600'} text-left leading-relaxed">
+                        ${explanation}
+                    </p>
+
+                    <button onclick="nextScenario()" class="grunge-btn py-2 px-6 text-xs w-full">
+                        ${currentGameIndex + 1 < survivalScenarios.length ? 'PROCEED TO NEXT DIAGNOSTIC &gt;&gt;' : 'GENERATE FINAL SURVIVAL REPORT &gt;&gt;'}
+                    </button>
+                </div>
+            `;
+        }
+
+        function nextScenario() {
+            currentGameIndex++;
+            if (currentGameIndex < survivalScenarios.length) {
+                renderScenario();
+            } else {
+                renderGameSummary();
+            }
+        }
+
+        function renderGameSummary() {
+            const container = document.getElementById('gameContainer');
+            const passed = gameScore >= 4;
+
+            container.innerHTML = `
+                <div class="font-mono space-y-4 text-center">
+                    <div class="cutout-wrapper">
+                        <span class="cutout ${passed ? 'c-5' : 'c-1'} text-2xl">
+                            ${passed ? 'SURVIVAL CLEAR' : 'SYSTEM OVERTAKEN'}
+                        </span>
+                    </div>
+
+                    <p class="text-3xl font-bold ${passed ? 'text-green-400' : 'text-red-500'}">
+                        DIAGNOSTIC SCORE: ${gameScore} / ${survivalScenarios.length}
+                    </p>
+
+                    <p class="text-xs text-neutral-300 bg-black p-3 border border-red-900 leading-relaxed text-left">
+                        ${passed 
+                            ? 'SYSTEM DEFENSES VERIFIED! You demonstrated critical digital literacy, cybersecurity caution, and ethical user choices. Help pass on these habits so there is NO NEXT VICTIM.' 
+                            : 'WARNING! Your responses left you vulnerable to scams or digital harm. Re-examine our safety dossiers to fortify your defenses.'}
+                    </p>
+
+                    <div class="flex gap-2">
+                        <button onclick="startSurvivalGame()" class="grunge-btn py-2 text-xs flex-1">RE-RUN DIAGNOSTIC</button>
+                        <button onclick="closeSurvivalGame()" class="grunge-btn-sec py-2 text-xs flex-1">RETURN TO TERMINAL</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Navigation History Stack for "Back Option"
+        let navHistory = ['home'];
+        const pageSequence = ['home', 'menu', 'about', 'contact'];
+
+        function navigateTo(viewId, pushToHistory = true) {
+            const currentView = navHistory[navHistory.length - 1];
+            if (currentView === viewId && pushToHistory) return;
+
+            document.querySelectorAll('.view-section').forEach(sec => sec.classList.add('hidden'));
+
+            const target = document.getElementById(`view-${viewId}`);
+            if (target) {
+                target.classList.remove('hidden');
+            }
+
+            if (pushToHistory) {
+                navHistory.push(viewId);
+            }
+
+            document.querySelectorAll('.nav-link').forEach(btn => {
+                btn.classList.remove('bg-red-600', 'text-black');
+            });
+            const activeBtn = document.getElementById(`nav-${viewId}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-red-600', 'text-black');
+            }
+
+            const idx = pageSequence.indexOf(viewId);
+            if (idx !== -1) {
+                document.getElementById('pageIndicator').innerText = `${idx + 1} / ${pageSequence.length}`;
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goBack() {
+            if (navHistory.length > 1) {
+                navHistory.pop();
+                const previousView = navHistory[navHistory.length - 1];
+                navigateTo(previousView, false);
+            } else {
+                navigateTo('home', false);
+            }
+        }
+
+        function navigatePage(direction) {
+            const currentView = navHistory[navHistory.length - 1] || 'home';
+            let currentIndex = pageSequence.indexOf(currentView);
+            if (currentIndex === -1) currentIndex = 0;
+
+            let nextIndex = currentIndex + direction;
+            if (nextIndex < 0) nextIndex = pageSequence.length - 1;
+            if (nextIndex >= pageSequence.length) nextIndex = 0;
+
+            navigateTo(pageSequence[nextIndex]);
+        }
+
+        // Modal Handlers
+        function openModal(articleKey) {
+            const data = articlesDB[articleKey];
+            if (!data) return;
+
+            const modalContent = document.getElementById('modalContent');
+            modalContent.innerHTML = `
+                <span class="cutout c-1 text-xs mb-2">${data.badge}</span>
+                <h2 class="text-xl font-bold text-red-400 border-b border-red-900 pb-2">${data.title}</h2>
+                <div class="mt-4">${data.content}</div>
+            `;
+            document.getElementById('articleModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('articleModal').classList.add('hidden');
+        }
+
+        // Search System
+        function toggleSearchModal() {
+            const modal = document.getElementById('searchModal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                document.getElementById('searchInput').focus();
+            }
+        }
+
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const resultsDiv = document.getElementById('searchResults');
+
+            if (!query) {
+                resultsDiv.innerHTML = '<p class="italic text-neutral-600">Enter keywords above to query system databases...</p>';
+                return;
+            }
+
+            let matches = [];
+            for (let key in articlesDB) {
+                const item = articlesDB[key];
+                if (item.title.toLowerCase().includes(query) || item.content.toLowerCase().includes(query)) {
+                    matches.push({ key, title: item.title });
+                }
+            }
+
+            if (matches.length === 0) {
+                resultsDiv.innerHTML = '<p class="text-red-500">No matching terminal entries found.</p>';
+            } else {
+                resultsDiv.innerHTML = matches.map(m => `
+                    <div onclick="closeSearchAndOpen('${m.key}')" class="p-2 bg-black hover:bg-red-950/50 border border-red-900 cursor-pointer text-red-400">
+                        &gt; ${m.title}
+                    </div>
+                `).join('');
+            }
+        }
+
+        function closeSearchAndOpen(key) {
+            toggleSearchModal();
+            openModal(key);
+        }
+
+        // Settings System
+        function toggleSettingsModal() {
+            document.getElementById('settingsModal').classList.toggle('hidden');
+        }
+
+        function toggleScanlines() {
+            const scanlines = document.querySelector('.scanlines');
+            const btn = document.getElementById('btnScanlines');
+            if (scanlines.style.display === 'none') {
+                scanlines.style.display = 'block';
+                btn.innerText = 'ENABLED';
+            } else {
+                scanlines.style.display = 'none';
+                btn.innerText = 'DISABLED';
+            }
+        }
+
+        let isLargeFont = false;
+        function toggleFontSize() {
+            const body = document.body;
+            const btn = document.getElementById('btnFont');
+            if (!isLargeFont) {
+                body.style.fontSize = '1.1rem';
+                btn.innerText = 'LARGE';
+                isLargeFont = true;
+            } else {
+                body.style.fontSize = '1rem';
+                btn.innerText = 'NORMAL';
+                isLargeFont = false;
+            }
+        }
+
+        let currentTheme = 'red';
+        function toggleTheme() {
+            const btn = document.getElementById('btnTheme');
+            if (currentTheme === 'red') {
+                document.documentElement.style.setProperty('--glitch-color1', '#00ff66');
+                btn.innerText = 'CYBER GREEN';
+                currentTheme = 'green';
+            } else {
+                document.documentElement.style.setProperty('--glitch-color1', '#ff0055');
+                btn.innerText = 'HAUNTED RED';
+                currentTheme = 'red';
+            }
+        }
+
+        // Checklist Audit Functionality
+        function updateAudit() {
+            const checkboxes = document.querySelectorAll('#checklist input[type="checkbox"]');
+            let checked = 0;
+            checkboxes.forEach(cb => { if (cb.checked) checked++; });
+
+            const status = document.getElementById('auditStatus');
+            status.innerText = `SECURITY STATUS: ${checked}/${checkboxes.length} PASSED`;
+            if (checked === checkboxes.length) {
+                status.className = "text-xs font-mono text-green-400 bg-black p-2 border border-green-600 font-bold";
+                status.innerText += " - DEFENSES VERIFIED!";
+            } else {
+                status.className = "text-xs font-mono text-neutral-400 bg-black p-2 border border-red-900/60";
+            }
+        }
+
+        // Contact Form Handling
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const status = document.getElementById('contactStatus');
+            status.classList.remove('hidden');
+            document.getElementById('contactForm').reset();
+            setTimeout(() => {
+                status.classList.add('hidden');
+            }, 4000);
+        }
+
+        // Back to Top Logic
+        window.onscroll = function() {
+            const btn = document.getElementById('backToTopBtn');
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                btn.classList.remove('hidden');
+            } else {
+                btn.classList.add('hidden');
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initial Setup
+        window.onload = function() {
+            navigateTo('home', false);
+        };
+    </script>
+</body>
+</html>
